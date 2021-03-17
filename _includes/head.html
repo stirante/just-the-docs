@@ -12,7 +12,12 @@
 
   <link rel="shortcut icon" href="{{ 'favicon.ico' | relative_url }}" type="image/x-icon">
 
-  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-default.css' | relative_url }}">
+  {% for theme in site.themes %}
+    {% if theme[0] != site.color_scheme %}
+      <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-' | append: theme[0] | append: '.css' | relative_url }}">
+    {% endif %}
+  {% endfor %}
+  <link rel="stylesheet" href="{{ '/assets/css/just-the-docs-' | append: site.color_scheme | append: '.css' | relative_url }}">
 
   {% if site.ga_tracking != nil %}
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga_tracking }}"></script>

@@ -62,6 +62,28 @@ function initNav() {
     searchInput.focus();
   });
   {%- endif %}
+  let allThemes = {{ site.themes | jsonify }};
+  let theme = "";
+  /*
+  Try to set the theme based on the one saved in browser. Fallback to browser theme, if none found.
+  */
+  if (typeof window.localStorage != 'undefined') {
+    theme = localStorage.getItem('theme');
+  }
+  if (theme === "" || !allThemes.hasOwnProperty(theme)) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      theme = "dark";
+    } else {
+      theme = "light";
+    }
+  }
+  if (theme !== {{ site.color_scheme | jsonify }}) {
+    jtd.setTheme(theme);
+  }
+  /* Disable automatic theme switcher based on system theme due to issues on iOS */
+  /*window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      changeTheme(e.matches ? "Dark" : "Light");
+  });*/
 }
 
 {%- if site.search_enabled != false %}
@@ -453,8 +475,15 @@ jtd.getTheme = function() {
 }
 
 jtd.setTheme = function(theme) {
-  var cssFile = document.querySelector('[rel="stylesheet"]');
-  cssFile.setAttribute('href', '{{ "assets/css/just-the-docs-" | absolute_url }}' + theme + '.css');
+  if (typeof window.localStorage != 'undefined') {
+    localStorage.setItem('theme', theme);
+  }
+  document.getElementById('theme-switcher').value = theme;
+  for (const index in document.styleSheets) {
+    if (!document.styleSheets.hasOwnProperty(index)) continue;
+    let stylesheet = document.styleSheets[index];
+    stylesheet.disabled = !stylesheet.href.endsWith("just-the-docs-" + theme + ".css");
+  }
 }
 
 // Document ready

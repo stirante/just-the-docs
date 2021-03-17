@@ -3,7 +3,8 @@
 </p>
 <br><br>
 <p align="center">
-    <h1 align="center">Just the Docs</h1>
+    <h1 align="center">Just the Bedrock Wiki</h1>
+    <p align="center">Fork of an excellent Just the Docs theme</p>
     <p align="center">A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.<br>Easily hosted on GitHub Pages with few dependencies.</p>
     <p align="center"><strong><a href="https://pmarsceill.github.io/just-the-docs/">See it in action!</a></strong></p>
     <br><br><br>

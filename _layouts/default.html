@@ -66,7 +66,7 @@ layout: table_wrappers
       {% endif %}
     </nav>
     <footer class="site-footer">
-      This site uses <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+      This site uses <a href="https://github.com/stirante/just-the-bedrock-wiki">Just the Bedrock Wiki</a>, a fork of <a href="https://github.com/pmarsceill/just-the-docs">Just the Docs</a> documentation theme for Jekyll.
     </footer>
   </div>
   <div class="main" id="top">
@@ -98,6 +98,13 @@ layout: table_wrappers
           </ul>
         </nav>
       {% endif %}
+      <div class="theme-switcher">
+        <select id="theme-switcher" onchange="jtd.setTheme(this.value)">
+          {%- for theme in site.themes -%}
+          <option value="{{ theme[0] }}" {% if site.color_scheme == theme[0] %} selected {%- endif -%}>{{ theme[1] }}</option>
+          {%- endfor -%}
+        </select>
+      </div>
     </div>
     <div id="main-content-wrap" class="main-content-wrap">
       {% unless page.url == "/" %}

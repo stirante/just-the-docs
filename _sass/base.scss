@@ -106,3 +106,23 @@ hr {
   background-color: $border-color;
   border: 0;
 }
+
+input {
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0.5em;
+  color: #555;
+  font: 95% Arial, Helvetica, sans-serif;
+}
+
+/*
+  Pixelated images
+*/
+
+img.pixelated {
+  image-rendering: pixelated;
+}
