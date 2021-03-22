@@ -1,13 +1,13 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = "just-the-docs"
-  spec.version       = "0.3.3"
-  spec.authors       = ["Patrick Marsceill"]
-  spec.email         = ["patrick.marsceill@gmail.com"]
+  spec.name          = "just-the-bedrock-wiki"
+  spec.version       = "0.3.4"
+  spec.authors       = ["Patrick Marsceill", "Piotr Brzozowski"]
+  spec.email         = ["patrick.marsceill@gmail.com", "brzozowski.s.piotr@gmail.com"]
 
-  spec.summary       = %q{A modern, highly customizable, and responsive Jekyll theme for documention with built-in search.}
-  spec.homepage      = "https://github.com/pmarsceill/just-the-docs"
+  spec.summary       = %q{A fork of modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.}
+  spec.homepage      = "https://github.com/stirante/just-the-bedrock-wiki"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(assets|bin|_layouts|_includes|lib|Rakefile|_sass|LICENSE|README)}i) }
