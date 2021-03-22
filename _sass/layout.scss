@@ -1,6 +1,7 @@
 //
 // The basic two column layout
 //
+// stylelint-disable selector-max-type
 
 .side-bar {
   z-index: 0;
@@ -31,8 +32,8 @@
   }
 
   @include mq(lg) {
-    margin-left: $nav-width;
     margin-right: $toc-width;
+    margin-left: $nav-width;
   }
 }
 
@@ -210,17 +211,17 @@ body {
 .theme-switcher select {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%239fa6b2' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
   border-width: 1px;
+  padding: 0.2rem 2.5rem 0.2rem 0.75rem;
   border-radius: 4px;
-  padding: .2rem 2.5rem .2rem .75rem;
   margin: 0.7rem 0;
-  outline: none;
-  background-color: $body-background-color;
   color: $link-color;
+  background-color: $body-background-color;
+  outline: none;
   appearance: none;
-  background-position: right .5rem center;
-  background-size: 1.5em 1.5em;
-  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
   width: 100%;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
 }
 
 .icon {

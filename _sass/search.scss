@@ -53,8 +53,8 @@
   border-right: 0;
   border-bottom: 0;
   border-left: 0;
-  border-radius: 0;
   color: $body-text-color;
+  border-radius: 0;
 
   @include mq(md) {
     padding-top: $gutter-spacing-sm;

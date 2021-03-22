@@ -1,7 +1,7 @@
 //
 // Base element style overrides
 //
-// stylelint-disable selector-no-type, selector-max-type
+// stylelint-disable selector-no-type, selector-max-type, selector-no-qualifying-type
 
 * {
   box-sizing: border-box;
@@ -108,15 +108,13 @@ hr {
 }
 
 input {
-  outline: none;
   box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+  outline: none;
   background: #fff;
-  border: 1px solid #ccc;
   padding: 0.5em;
-  color: #555;
+  border: 1px solid #ccc;
   font: 95% Arial, Helvetica, sans-serif;
+  color: #555;
 }
 
 /*
