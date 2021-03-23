@@ -1,36 +1,36 @@
-// stylelint-disable selector-max-type, selector-no-qualifying-type, selector-max-specificity, selector-max-id, selector-max-compound-selectors
+// stylelint-disable selector-max-type, selector-no-qualifying-type, selector-max-specificity, selector-max-id, selector-max-compound-selectors, declaration-property-value-blacklist
 
 @include mq(lg) {
   #toc {
     position: fixed;
     top: $header-height;
     right: 24px;
-    border-left: 1px solid $border-color;
     max-width: $toc-width;
-    overflow-y: auto;
     max-height: calc(100% - 60px - 2rem);
     padding-left: 12px;
+    overflow-y: auto;
+    border-left: 1px solid $border-color;
 
     ul,
     ol {
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
     li {
       margin-left: 1rem;
     }
 
     li.active > a {
-      color: mix($body-background-color, $body-text-color, 10%);
       font-weight: 500;
+      color: mix($body-background-color, $body-text-color, 10%);
     }
 
     a {
-      background: none;
-      text-decoration: none;
       display: block;
-      padding: .125rem 0;
+      padding: 0.125rem 0;
       color: mix($body-background-color, $body-text-color, 70%);
+      text-decoration: none;
+      background: none;
       transition: all 50ms ease-in-out;
     }
 

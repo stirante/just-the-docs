@@ -526,6 +526,36 @@ function initTOC() {
   }
 }
 
+function initContributorsWidget() {
+  const REPO = {{ site.gh_edit_repository | remove_first: "https://github.com/" | remove_first: "http://github.com/" | remove_first: "github.com/" | jsonify}};
+  const CONTRIBUTORS_URL = "https://api.github.com/repos/" + REPO + "/commits?path=";
+  fetch(CONTRIBUTORS_URL + jtd.path)
+      .then(response => response.json())
+      .then(commits => {
+        let contributors = [];
+        for (let i = 0; i < commits.length; i++) {
+          if (commits[i].author && commits[i].author.login && contributors.filter(value => value.login === commits[i].author.login).length === 0) {
+            contributors.push(commits[i].author);
+          }
+        }
+
+        if (contributors.length > 0) {
+          let grid = document.getElementById("contributors");
+          for (const contributor of contributors) {
+            let cont = document.createElement("img");
+            cont.setAttribute("src", contributor.avatar_url);
+            cont.setAttribute("alt", contributor.login);
+            let a = document.createElement("a");
+            a.setAttribute("href", contributor.html_url);
+            a.setAttribute("alt", contributor.login);
+            a.setAttribute("target", "_blank");
+            a.append(cont);
+            grid.append(a);
+          }
+        }
+      });
+}
+
 // Document ready
 
 jtd.onReady(function(){
@@ -534,7 +564,12 @@ jtd.onReady(function(){
   initSearch();
   {%- endif %}
   initTOC();
+  initContributorsWidget();
 });
+
+jtd.setPath = function(path) {
+  jtd.path = path;
+}
 
 })(window.jtd = window.jtd || {});
 
