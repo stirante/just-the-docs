@@ -96,7 +96,7 @@ function initSearch() {
   request.onload = function(){
     if (request.status >= 200 && request.status < 400) {
       var docs = JSON.parse(request.responseText);
-      
+
       lunr.tokenizer.separator = {{ site.search.tokenizer_separator | default: site.search_tokenizer_separator | default: "/[\s\-/]+/" }}
 
       var index = lunr(function(){
@@ -486,6 +486,46 @@ jtd.setTheme = function(theme) {
   }
 }
 
+function initTOC() {
+  /*
+  Simple field, which limits the number of updates.
+  Scroll event can be called multiple timer per animation frame, which might cause poor performance
+  */
+  let ticking = false;
+
+  /*
+  This function highlights current section in TOC
+  */
+  function updateTOC() {
+    if (!ticking) {
+      window.requestAnimationFrame(function () {
+        let selector = 'h1[id], h2[id]';
+        if (document.querySelector(`#toc`).classList.contains('top-level')) {
+          selector = 'h1[id]';
+        }
+        document.querySelectorAll(`#toc li.active`).forEach(value => value.classList.remove('active'));
+        let nodes = document.querySelectorAll(selector);
+        let closest = null;
+        for (let i = 0; i < nodes.length; i++) {
+          if (closest === null || (Math.abs(window.scrollY - closest.offsetTop) > Math.abs(window.scrollY - nodes[i].offsetTop))) {
+            closest = nodes[i];
+          }
+        }
+        document.querySelector(`#toc li a[href='#${closest.getAttribute('id')}']`).parentElement.classList.add('active');
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  /*
+  Add scroll listener, which updates TOC
+  */
+  if (document.querySelector(`#toc`)) {
+    window.addEventListener('scroll', updateTOC);
+    updateTOC();
+  }
+}
+
 // Document ready
 
 jtd.onReady(function(){
@@ -493,6 +533,7 @@ jtd.onReady(function(){
   {%- if site.search_enabled != false %}
   initSearch();
   {%- endif %}
+  initTOC();
 });
 
 })(window.jtd = window.jtd || {});

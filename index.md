@@ -6,6 +6,14 @@ description: "Just the Docs is a responsive Jekyll theme with built-in search th
 permalink: /
 ---
 
+<details id="toc" open markdown="block">
+  <summary>
+    Table of contents
+</summary>
+1. TOC
+{:toc}
+</details>
+
 # Focus on writing good documentation
 {: .fs-9 }
 

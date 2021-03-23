@@ -1,0 +1,96 @@
+// stylelint-disable selector-max-type, selector-no-qualifying-type, selector-max-specificity, selector-max-id, selector-max-compound-selectors
+
+@include mq(lg) {
+  #toc {
+    position: fixed;
+    top: $header-height;
+    right: 24px;
+    border-left: 1px solid $border-color;
+    max-width: $toc-width;
+    overflow-y: auto;
+    max-height: calc(100% - 60px - 2rem);
+    padding-left: 12px;
+
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin-left: 1rem;
+    }
+
+    li.active > a {
+      color: mix($body-background-color, $body-text-color, 10%);
+      font-weight: 500;
+    }
+
+    a {
+      background: none;
+      text-decoration: none;
+      display: block;
+      padding: .125rem 0;
+      color: mix($body-background-color, $body-text-color, 70%);
+      transition: all 50ms ease-in-out;
+    }
+
+    a:hover,
+    a:focus {
+      color: $body-text-color;
+    }
+    &:not(.numbered) ol > li::before {
+      content: none;
+    }
+
+    code {
+      font-size: 1.2em;
+      background: none;
+    }
+
+    pre {
+      background: none;
+    }
+
+    #toc div.highlighter-rouge {
+      border: 0;
+    }
+  }
+}
+
+#toc pre {
+  overflow: hidden !important;
+}
+
+#toc > ol > li > ol > li > ol {
+  display: none;
+}
+
+#toc.top-level > ol > li > ol {
+  display: none;
+}
+
+.numbered ol {
+  list-style-type: none;
+  counter-reset: toc !important;
+}
+
+.numbered ol > li::before {
+  content: counters(toc, ".") ". " !important;
+  counter-increment: toc !important;
+}
+
+.numbered li ol > li::before {
+  content: counters(toc, ".") " ";
+}
+
+.numbered li ol > li {
+  padding-left: 1em;
+}
+
+details#toc summary::-webkit-details-marker {
+  display: none;
+}
+
+details#toc > summary {
+  list-style: none;
+}
