@@ -99,7 +99,7 @@ layout: table_wrappers
         </nav>
       {% endif %}
       <div class="theme-switcher">
-        <select id="theme-switcher" onchange="jtd.setTheme(this.value)">
+        <select id="theme-switcher" class="theme-switcher-select" onchange="jtd.setTheme(this.value)">
           {%- for theme in site.themes -%}
           <option value="{{ theme[0] }}" {% if site.color_scheme == theme[0] %} selected {%- endif -%}>{{ theme[1] }}</option>
           {%- endfor -%}

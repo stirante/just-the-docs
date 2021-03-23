@@ -1,10 +1,10 @@
 {
-  "name": "just-the-docs",
-  "version": "0.3.3",
-  "description": "A modern Jekyll theme for documentation",
-  "repository": "pmarsceill/just-the-docs",
+  "name": "just-the-bedrock-wiki",
+  "version": "0.3.4",
+  "description": "A fork of modern Jekyll theme for documentation",
+  "repository": "stirante/just-the-bedrock-wiki",
   "license": "MIT",
-  "bugs": "https://github.com/pmarsceill/just-the-docs/issues",
+  "bugs": "https://github.com/stirante/just-the-bedrock-wiki/issues",
   "devDependencies": {
     "stylelint": "^13.7.2",
     "@primer/css": "^15.2.0",
@@ -12,12 +12,12 @@
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-primer": "^9.2.1",
     "stylelint-prettier": "^1.1.2",
-    "stylelint-selector-no-utility": "^4.0.0"
+    "stylelint-selector-no-utility": "^4.0.0",
+    "caniuse-lite": "^1.0.30001204"
   },
   "scripts": {
-    "test": "stylelint '**/*.scss'",
-    "format": "prettier --write '**/*.{scss,js,json}'",
+    "test": "stylelint **/*.scss",
+    "format": "prettier --write **/*.{scss,js,json}",
     "stylelint-check": "stylelint-config-prettier-check"
-  },
-  "dependencies": {}
+  }
 }
